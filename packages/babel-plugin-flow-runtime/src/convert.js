@@ -1050,14 +1050,14 @@ converters.Class = (context: ConversionContext, path: NodePath): Node => {
     if (hasSuperTypeParameters) {
       invocations.push(context.call(
         'extends',
-        path.node.superClass,
+        t.identifier(path.node.superClass.name),
         ...superTypeParameters.map(item => convert(context, item))
       ));
     }
     else {
       invocations.push(context.call(
         'extends',
-        path.node.superClass
+        t.identifier(path.node.superClass.name)
       ));
     }
   }
